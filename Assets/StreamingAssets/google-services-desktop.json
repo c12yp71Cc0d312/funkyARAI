@@ -1,0 +1,31 @@
+{
+  "project_info": {
+    "project_number": "782368074096",
+    "project_id": "unity-ar-ml",
+    "storage_bucket": "unity-ar-ml.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:782368074096:ios:cf6084e503db4ddffd87b5",
+        "android_client_info": {
+          "package_name": "com.shriram1841.funkyARAI"
+        }
+      },
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTXNRqqa--ov7CK2Kn4yWNHv9MjDOrtjY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 0
+        },
+        "appinvite_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
