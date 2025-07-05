@@ -22,30 +22,26 @@ public class LoginManager : MonoBehaviour
     private FirebaseAuth auth;
 
     // Called once at the start
-    void Start()
+    IEnumerator Start()
     {
         Debug.Log("App starting");
-        // Initialize Firebase dependencies
-        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
-            var status = task.Result;
-            if (status == DependencyStatus.Available)
-            {
-                // Get the default instance of FirebaseAuth
-                auth = FirebaseAuth.DefaultInstance;
-                Debug.Log("Firebase Auth ready");
-            }
-            else
-            {
-                Debug.LogError("Firebase dependencies not resolved: " + status);
-            }
-        });
 
-        // Set up button click listener
+        loginButton.interactable = false; // Disable login button until Firebase is ready
+
+        // Wait until FirebaseInit signals readiness
+        yield return new WaitUntil(() => FirebaseInit.IsFirebaseReady);
+        auth = FirebaseInit.auth;
+
+        Debug.Log("Firebase ready inside LoginManager");
+
+        // Set listener after Firebase is ready
         loginButton.onClick.AddListener(LoginUser);
+        loginButton.interactable = true;
 
-        arSessionRoot.SetActive(false);      // Hide AR stuff at first
-        snapshotButton.SetActive(false);     // Hide Capture button
-        messageText.gameObject.SetActive(false); // Hide message text initially
+        arSessionRoot.SetActive(false);
+        snapshotButton.SetActive(false);
+        messageText.gameObject.SetActive(false);
+        Debug.Log("UI initialization completed");
 
     }
 

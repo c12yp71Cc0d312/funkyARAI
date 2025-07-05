@@ -7,6 +7,7 @@ public class FirebaseInit : MonoBehaviour
     // Static variables to make FirebaseAuth and FirebaseUser accessible globally
     public static FirebaseAuth auth;
     public static FirebaseUser user;
+    public static bool IsFirebaseReady { get; private set; } = false;
 
     // Awake is called when the script instance is being loaded
     void Awake()
@@ -22,6 +23,8 @@ public class FirebaseInit : MonoBehaviour
             {
                 // Initialize Firebase Authentication
                 auth = FirebaseAuth.DefaultInstance;
+
+                IsFirebaseReady = true;
 
                 // Log success
                 Debug.Log("Firebase initialized successfully.");
