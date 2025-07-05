@@ -11,7 +11,7 @@ public class MissingScriptFinder : MonoBehaviour
         int componentsCount = 0;
         int missingCount = 0;
 
-        GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>();
+        GameObject[] allObjects = GameObject.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
 
         foreach (GameObject go in allObjects)
         {
